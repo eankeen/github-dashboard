@@ -1,0 +1,14 @@
+{
+	"include": ["src"],
+	"compilerOptions": {
+		"outDir": "build",
+		"target": "ESNext",
+		"baseUrl": ".",
+		"jsx": "react",
+		"esModuleInterop": true,
+		"useDefineForClassFields": true,
+		"noEmit": true,
+		"experimentalDecorators": true,
+		"emitDecoratorMetadata": true
+	}
+}
