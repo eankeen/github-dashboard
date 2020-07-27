@@ -5,7 +5,7 @@ import {
 	GraphQLString,
 } from 'graphql'
 
-export const graphqlSchema = new GraphQLSchema({
+export const Schema = new GraphQLSchema({
 	query: new GraphQLObjectType({
 		name: 'RootQueryType',
 		fields: {

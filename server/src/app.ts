@@ -20,11 +20,6 @@ export async function appFactory() {
 
 	app.use(
 		helmet({
-			contentSecurityPolicy: {
-				directives: {
-					defaultSrc: ["'self'"],
-				},
-			},
 			permittedCrossDomainPolicies: {
 				permittedPolicies: 'master-only',
 			},
