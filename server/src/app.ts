@@ -1,9 +1,12 @@
 import path from 'path'
 import express from 'express'
+import dotenv from 'dotenv'
 import helmet from 'helmet'
 import { router } from './routes'
 
 export async function appFactory() {
+	dotenv.config({ path: path.join(__dirname, '../.env') })
+
 	const app = express()
 
 	app.set('views', path.join(__dirname, 'views'))
@@ -28,22 +31,24 @@ export async function appFactory() {
 			},
 		})
 	)
-	app.use(
-		express.urlencoded({
-			extended: true,
-			inflate: true,
-			parameterLimit: 20,
-			type: ['application/x-www-form-urlencoded'],
-		})
-	)
-	app.use(
-		express.json({
-			inflate: true,
-			reviver: null,
-			strict: true,
-			type: ['application/json'],
-		})
-	)
+
+	// app.use(
+	// 	express.urlencoded({
+	// 		extended: true,
+	// 		inflate: true,
+	// 		parameterLimit: 20,
+	// 		type: ['application/x-www-form-urlencoded'],
+	// 	})
+	// )
+	// app.use(
+	// 	express.json({
+	// 		inflate: true,
+	// 		reviver: null,
+	// 		strict: true,
+	// 		type: ['application/json'],
+	// 	})
+	// )
+
 	app.use(
 		express.static(path.join(__dirname, 'public'), {
 			index: false,

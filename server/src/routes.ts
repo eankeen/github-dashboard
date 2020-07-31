@@ -5,25 +5,28 @@ import { Schema } from './schema'
 
 const router = Router()
 
-router.get('/', (req, res) => {
-	res.send('foo bar')
-})
-
 router.use(
 	'/graphql-github',
+	(req, res, next) => {
+		req.originalUrl = '/graphql'
+		req.headers['authorization'] = `bearer ${process.env.GITHUB_TOKEN}`
+		next()
+	},
 	createProxyMiddleware({
-		target: ' https://api.github.com/graphql',
+		target: 'https://api.github.com',
+		logLevel: 'debug',
 		changeOrigin: true,
-		ws: false,
+		secure: false,
+		ws: true,
 	})
 )
-router.use(
-	'/graphql',
-	graphqlHTTP({
-		schema: Schema,
-		graphiql: process.env.NODE_ENV === 'development',
-		pretty: process.env.NODE_ENV === 'development',
-	})
-)
+// router.use(
+// 	'/graphql',
+// 	graphqlHTTP({
+// 		schema: Schema,
+// 		graphiql: process.env.NODE_ENV === 'development',
+// 		pretty: process.env.NODE_ENV === 'development',
+// 	})
+// )
 
 export { router }
