@@ -1,49 +1,56 @@
 import React, { useEffect, useState } from 'react'
+import { createClient, defaultExchanges, Provider } from 'urql'
+import { devtoolsExchange } from '@urql/devtools'
+
 import logo from './logo.svg'
 import './App.css'
+import RepoList from './components/RepoList'
 
-function App() {
-	const [count, setCount] = useState(0)
+const client = createClient({
+	url: '/graphql-github',
+	exchanges: [devtoolsExchange, ...defaultExchanges],
+})
 
-	useEffect(() => {
-		fetch('/graphql-github', {
-			method: 'POST',
-			body: `{ "query": "{ hello }" }`,
-		})
-			.then((res: Response) => {
-				return res.json()
-			})
-			.then((json: Record<string, any>) => {
-				console.log('json', json)
-			})
-			.catch((err: unknown) => {
-				console.error(err)
-			})
-	})
+export default function App() {
+	const [json, setJson] = useState(null)
+
+	// useEffect(() => {
+	// 	fetch('/graphql-github', {
+	// 		method: 'POST',
+	// 		body: `{ "query": "{ viewer { name, login, repositories(first: 100) { edges { node { name }} } } }" }`,
+	// 	})
+	// 		.then((res: Response) => {
+	// 			return res.json()
+	// 		})
+	// 		.then((json: Record<string, any>) => {
+	// 			console.log('json', json)
+	// 			setJson(json)
+	// 		})
+	// 		.catch((err: unknown) => {
+	// 			console.error(err)
+	// 		})
+	// }, [])
 	return (
 		<div className="App">
-			<header className="App-header">
-				<img src={logo} className="App-logo" alt="logo" />
-				<p>Hello Vite + React!</p>
-				<p>
-					<button onClick={() => setCount((count) => count + 1)}>
-						count is: {count}
-					</button>
-				</p>
-				<p>
-					Edit <code>App.jsx</code> and save to test HMR updates.
-				</p>
-				<a
-					className="App-link"
-					href="https://reactjs.org"
-					target="_blank"
-					rel="noopener noreferrer"
-				>
-					Learn React
-				</a>
-			</header>
+			<Provider value={client}>
+				<RepoList />
+				{/* {json ? (
+					<div>
+						<h1>Json</h1>
+						<h2>{json.data.viewer.repositories.edges.length}</h2>
+						{json.data.viewer.repositories.edges.map((node) => {
+						return (
+							<div key={node.name}>
+								<h2>{node.node.name}</h2>
+								<p></p>
+							</div>
+						)
+					})}
+					</div>
+				) : (
+					<p>loading...</p>
+				)} */}
+			</Provider>
 		</div>
 	)
 }
-
-export default App

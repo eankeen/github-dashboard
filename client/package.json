@@ -7,11 +7,16 @@
 	},
 	"dependencies": {
 		"@pika/react": "^16.13.1",
-		"@pika/react-dom": "^16.13.1"
+		"@pika/react-dom": "^16.13.1",
+		"@primer/components": "^20.0.0",
+		"graphql": "^15.3.0",
+		"styled-components": "^5.1.1",
+		"urql": "^1.10.0"
 	},
 	"devDependencies": {
 		"@types/react": "^16.9.43",
 		"@types/react-dom": "^16.9.8",
+		"@urql/devtools": "^2.0.2",
 		"vite": "^1.0.0-rc.1",
 		"vite-plugin-react": "^3.0.0"
 	}
