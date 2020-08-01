@@ -1,0 +1,28 @@
+{
+  "name": "next",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "@primer/components": "^20.0.0",
+    "@urql/devtools": "^2.0.2",
+    "graphql": "^15.3.0",
+    "isomorphic-unfetch": "^3.0.0",
+    "next": "9.5.1",
+    "next-urql": "^1.1.0",
+    "react": "16.13.1",
+    "react-dom": "16.13.1",
+    "react-is": "^16.13.1",
+    "styled-components": "^5.1.1",
+    "urql": "^1.10.0"
+  },
+  "devDependencies": {
+    "@types/node": "^14.0.27",
+    "@types/react": "^16.9.44",
+    "typescript": "^3.9.7"
+  }
+}
