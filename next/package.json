@@ -8,8 +8,8 @@
     "start": "next start"
   },
   "dependencies": {
-    "@primer/components": "^20.0.0",
     "@urql/devtools": "^2.0.2",
+    "evergreen-ui": "^4.29.1",
     "graphql": "^15.3.0",
     "isomorphic-unfetch": "^3.0.0",
     "next": "9.5.1",
