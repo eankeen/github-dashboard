@@ -25,90 +25,90 @@ function Home() {
 					) {
 						totalCount
 						nodes {
-							commitComments(first: 10) {
-								totalCount
-								nodes {
-									author {
-										login
-										url
-									}
-									authorAssociation
-									body
-									bodyText
-									createdAt
-									url
-								}
-							}
-							createdAt
-							description
-							descriptionHTML
-							diskUsage
-							forkCount
-							hasIssuesEnabled
-							hasProjectsEnabled
-							hasWikiEnabled
-							homepageUrl
-							isArchived
-							isDisabled
-							isEmpty
-							isFork
-							isLocked
-							isMirror
-							isPrivate
-							isTemplate
-							labels(first: 100) {
-								nodes {
-									name
-								}
-							}
-							languages(first: 100) {
-								totalCount
-								nodes {
-									color
-									name
-								}
-							}
-							licenseInfo {
-								key
-								name
-								nickname
-								spdxId
-								url
-							}
-							mirrorUrl
+							# commitComments(first: 10) {
+							# 	totalCount
+							# 	nodes {
+							# 		author {
+							# 			login
+							# 			url
+							# 		}
+							# 		authorAssociation
+							# 		body
+							# 		bodyText
+							# 		createdAt
+							# 		url
+							# 	}
+							# }
+							# createdAt
+							# description
+							# descriptionHTML
+							# diskUsage
+							# forkCount
+							# hasIssuesEnabled
+							# hasProjectsEnabled
+							# hasWikiEnabled
+							# homepageUrl
+							# isArchived
+							# isDisabled
+							# isEmpty
+							# isFork
+							# isLocked
+							# isMirror
+							# isPrivate
+							# isTemplate
+							# labels(first: 100) {
+							# 	nodes {
+							# 		name
+							# 	}
+							# }
+							# languages(first: 100) {
+							# 	totalCount
+							# 	nodes {
+							# 		color
+							# 		name
+							# 	}
+							# }
+							# licenseInfo {
+							# 	key
+							# 	name
+							# 	nickname
+							# 	spdxId
+							# 	url
+							# }
+							# mirrorUrl
 							name
 							nameWithOwner
 							owner {
 								login
 								url
 							}
-							parent {
-								name
-								url
-							}
-							primaryLanguage {
-								color
-								name
-							}
-							sshUrl
-							stargazers(first: 100) {
-								nodes {
-									login
-									url
-								}
-							}
-							submodules(first: 100) {
-								nodes {
-									gitUrl
-									name
-									path
-								}
-							}
+							# parent {
+							# 	name
+							# 	url
+							# }
+							# primaryLanguage {
+							# 	color
+							# 	name
+							# }
+							# sshUrl
+							# stargazers(first: 100) {
+							# 	nodes {
+							# 		login
+							# 		url
+							# 	}
+							# }
+							# submodules(first: 100) {
+							# 	nodes {
+							# 		gitUrl
+							# 		name
+							# 		path
+							# 	}
+							# }
 							url
-							viewerHasStarred
-							watchers {
-								totalCount
-							}
+							# viewerHasStarred
+							# watchers {
+							# 	totalCount
+							# }
 						}
 					}
 					repositoriesContributedTo(
@@ -118,12 +118,12 @@ function Home() {
 						totalCount
 						nodes {
 							name
-							url
 							nameWithOwner
 							owner {
 								url
 								login
 							}
+							url
 						}
 					}
 					twitterUsername

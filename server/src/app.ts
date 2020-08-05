@@ -40,22 +40,6 @@ export async function appFactory() {
 	// 		type: ['application/x-www-form-urlencoded'],
 	// 	})
 	// )
-	// app.use(
-	// 	express.json({
-	// 		inflate: true,
-	// 		reviver: null,
-	// 		strict: true,
-	// 		type: ['application/json'],
-	// 	})
-	// )
-
-	app.use(
-		express.static(path.join(__dirname, 'public'), {
-			index: false,
-			lastModified: false,
-			redirect: false,
-		})
-	)
 
 	app.use(router)
 

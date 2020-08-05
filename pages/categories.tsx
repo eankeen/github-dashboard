@@ -2,10 +2,11 @@ import '../styles/Home.module.css'
 import { Heading } from 'evergreen-ui'
 import LayoutMain from '../layouts/LayoutMain'
 
-export default function Home() {
+export default function CategoriesPage() {
 	return (
 		<LayoutMain>
-			<Heading>Index</Heading>
+			<h1>Foo</h1>
+			<Heading>Categories</Heading>
 		</LayoutMain>
 	)
 }
