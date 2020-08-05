@@ -35,7 +35,9 @@ export default function LayoutMain({ children }) {
 					</Link>
 				))}
 			</Tablist>
-			<Pane margin={8}>{children}</Pane>
+			<Pane margin={8} width="100%">
+				{children}
+			</Pane>
 		</Pane>
 	)
 }

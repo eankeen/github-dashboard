@@ -2,7 +2,9 @@ import '../styles/Home.module.css'
 import { defaultExchanges, useQuery } from 'urql'
 import { withUrqlClient } from 'next-urql'
 import { devtoolsExchange } from '@urql/devtools'
-import { Link, Table } from 'evergreen-ui'
+import { Link, Table, Pane } from 'evergreen-ui'
+import { RepositoryRow } from './RepositoryRow'
+import { RepositoryTags } from './RepositoryTags'
 
 function Home() {
 	const [res] = useQuery({
@@ -152,33 +154,25 @@ function Home() {
 	const combined = Array.from([...repos, ...repos2])
 
 	return (
-		<>
+		<Pane>
+			<RepositoryTags />
 			<h2>{combined.length}</h2>
 			<Table width="100%">
 				<Table.Head>
 					<Table.SearchHeaderCell />
-					<Table.TextHeaderCell>Last Activity</Table.TextHeaderCell>
-					<Table.TextHeaderCell>ltv</Table.TextHeaderCell>
+				</Table.Head>
+				<Table.Head>
+					<Table.TextHeaderCell>Name</Table.TextHeaderCell>
+					<Table.TextHeaderCell>Owner</Table.TextHeaderCell>
+					<Table.TextHeaderCell>Tags</Table.TextHeaderCell>
 				</Table.Head>
 				<Table.Body>
 					{combined.map((node) => (
-						<Table.Row key={node.id} isSelectable onSelect={() => {}}>
-							<Table.TextCell>
-								<Link href={node.url} target="__blank">
-									{node.name}
-								</Link>
-							</Table.TextCell>
-							<Table.TextCell>
-								<Link href={node.owner.url} target="__blank">
-									{node.owner.login}
-								</Link>
-							</Table.TextCell>
-							<Table.TextCell isNumber>{node.ltv}</Table.TextCell>
-						</Table.Row>
+						<RepositoryRow node={node} />
 					))}
 				</Table.Body>
 			</Table>
-		</>
+		</Pane>
 	)
 }
 

@@ -5,7 +5,6 @@ import LayoutMain from '../layouts/LayoutMain'
 export default function CategoriesPage() {
 	return (
 		<LayoutMain>
-			<h1>Foo</h1>
 			<Heading>Categories</Heading>
 		</LayoutMain>
 	)
