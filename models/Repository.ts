@@ -8,8 +8,7 @@ interface IRepository extends mongoose.Document {
 const repositorySchema = new mongoose.Schema({
 	name: {
 		type: String,
-		// required: true,
-		// index: true,
+		required: true,
 		unique: true,
 		trim: true,
 	},

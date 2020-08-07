@@ -7,27 +7,6 @@ export default async function (req, res) {
 
 	console.log(req.body)
 
-	// const newRepository = new Repository({
-	// 	name: req.body.repository,
-	// 	tags: req.body.tags,
-	// })
-
-	// newRepository
-	// 	.save()
-	// 	.then((doc) => {
-	// 		console.info('doc saved')
-	// 		res.json({
-	// 			success: 'success',
-	// 		})
-	// 	})
-	// 	.catch((err: unknown) => {
-	// 		console.error(err)
-	// 		res.status(400)
-	// 		res.json({
-	// 			error: 'there was an error',
-	// 		})
-	// 	})
-	// TODO: cleanup
 	Repository.findOne({
 		name: req.body.repository,
 	})

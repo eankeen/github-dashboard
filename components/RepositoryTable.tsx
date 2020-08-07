@@ -187,6 +187,6 @@ function RepositoryTable({ repos }: repositoryTableProps) {
 }
 
 export default withUrqlClient((_ssrExchange, ctx) => ({
-	url: 'http://localhost:3000/graphql-github',
+	url: 'http://localhost:3005/api/graphql-github',
 	exchanges: [devtoolsExchange, ...defaultExchanges],
 }))(RepositoryTable)

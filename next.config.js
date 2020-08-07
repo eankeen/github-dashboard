@@ -9,7 +9,7 @@ module.exports = {
 			// },
 			// {
 			// 	source: '/graphql-github',
-			// 	destination: 'http://127.0.0.1:3000',
+			// 	destination: 'http://api.github.com/graphql',
 			// },
 		]
 	},
