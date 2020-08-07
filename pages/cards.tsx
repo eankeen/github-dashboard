@@ -8,6 +8,9 @@ import {
 } from 'next'
 import { dbConnect } from '../utils/dbConnect'
 import { Repository } from '../models/Repository'
+// import repositoriesQuery from '../graphql/repositories.graphql'
+import { repositoriesQuery } from '../graphql/repositories'
+import RepositoryCards from '../components/RepositoryCards'
 
 export default function cards({
 	repositories,
@@ -17,14 +20,7 @@ export default function cards({
 			<Heading is="h1" size={800}>
 				Cards
 			</Heading>
-			{repositories.map((repository) => {
-				return (
-					<Card>
-						<Heading>{repository.name} </Heading>
-						<TagInput values={repository.tags} />
-					</Card>
-				)
-			})}
+			<RepositoryCards repositories={repositories} />
 		</LayoutSidebar>
 	)
 }

@@ -6,7 +6,7 @@ interface repositoryTagsProps {
 	tags: string[]
 }
 
-export function RepositoryTags({
+export default function RepositoryTags({
 	repository,
 	tags: tagsProp,
 }: repositoryTagsProps) {

@@ -1,16 +1,19 @@
 module.exports = {
 	reactStrictMode: true,
 	poweredByHeader: false,
-	async rewrites() {
-		return [
-			// {
-			// 	source: '/repo',
-			// 	destination: 'http://127.0.0.1:3000',
-			// },
-			// {
-			// 	source: '/graphql-github',
-			// 	destination: 'http://api.github.com/graphql',
-			// },
-		]
+	webpack: (
+		/** @type webpack.Configuration */ config,
+		{ buildId, dev, isServer, defaultLoaders, webpack }
+	) => {
+		config.module.rules.push({
+			test: /\.graphql?$/,
+			loader: 'webpack-graphql-loader',
+			options: {
+				// validate: true,
+				removeUnusedFragments: true,
+			},
+		})
+
+		return config
 	},
 }

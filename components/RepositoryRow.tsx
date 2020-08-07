@@ -1,5 +1,5 @@
 import { Table, Link, TagInput } from 'evergreen-ui'
-import { RepositoryTags } from './RepositoryTags'
+import RepositoryTags from './RepositoryTags'
 
 interface repositoryRowProps {
 	node: {
