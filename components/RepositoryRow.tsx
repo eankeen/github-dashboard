@@ -11,9 +11,13 @@ interface repositoryRowProps {
 			login: string
 		}
 	}
+	repo: {
+		name: string
+		repos: string[]
+	}
 }
 
-export function RepositoryRow({ node }: repositoryRowProps) {
+export function RepositoryRow({ node, repo }: repositoryRowProps) {
 	return (
 		<Table.Row key={node.id} isSelectable onSelect={() => {}}>
 			<Table.TextCell>
@@ -27,7 +31,10 @@ export function RepositoryRow({ node }: repositoryRowProps) {
 				</Link>
 			</Table.TextCell>
 			<Table.Cell>
-				<RepositoryTags />
+				<RepositoryTags
+					repository={node.name}
+					tags={repo ? repo.repos : void 0}
+				/>
 			</Table.Cell>
 		</Table.Row>
 	)

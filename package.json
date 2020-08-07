@@ -1,28 +1,32 @@
 {
-  "name": "next",
-  "version": "0.1.0",
-  "private": true,
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start"
-  },
-  "dependencies": {
-    "@urql/devtools": "^2.0.2",
-    "evergreen-ui": "^4.29.1",
-    "graphql": "^15.3.0",
-    "isomorphic-unfetch": "^3.0.0",
-    "next": "9.5.1",
-    "next-urql": "^1.1.0",
-    "react": "16.13.1",
-    "react-dom": "16.13.1",
-    "react-is": "^16.13.1",
-    "styled-components": "^5.1.1",
-    "urql": "^1.10.0"
-  },
-  "devDependencies": {
-    "@types/node": "^14.0.27",
-    "@types/react": "^16.9.44",
-    "typescript": "^3.9.7"
-  }
+	"name": "next",
+	"version": "0.1.0",
+	"private": true,
+	"scripts": {
+		"dev": "next dev -p 3005",
+		"build": "next build",
+		"start": "next start"
+	},
+	"dependencies": {
+		"@types/mongoose": "^5.7.34",
+		"@urql/devtools": "^2.0.2",
+		"evergreen-ui": "^4.29.1",
+		"graphql": "^15.3.0",
+		"http-proxy-middleware": "^1.0.5",
+		"isomorphic-unfetch": "^3.0.0",
+		"mongoose": "^5.9.27",
+		"next": "9.5.1",
+		"next-connect": "^0.8.1",
+		"next-urql": "^1.1.0",
+		"react": "16.13.1",
+		"react-dom": "16.13.1",
+		"react-is": "^16.13.1",
+		"styled-components": "^5.1.1",
+		"urql": "^1.10.0"
+	},
+	"devDependencies": {
+		"@types/node": "^14.0.27",
+		"@types/react": "^16.9.44",
+		"typescript": "^3.9.7"
+	}
 }

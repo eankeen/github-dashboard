@@ -1,11 +1,12 @@
-import '../styles/Home.module.css'
-import { Heading } from 'evergreen-ui'
-import LayoutMain from '../layouts/LayoutMain'
+import { useEffect } from 'react'
+import { useRouter } from 'next/router'
 
-export default function Home() {
-	return (
-		<LayoutMain>
-			<Heading>Index</Heading>
-		</LayoutMain>
-	)
+export default function IndexPage() {
+	const router = useRouter()
+
+	useEffect(() => {
+		router.push('/list')
+	}, [])
+
+	return <p>Redirecting...</p>
 }

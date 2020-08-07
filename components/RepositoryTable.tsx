@@ -1,12 +1,16 @@
-import '../styles/Home.module.css'
 import { defaultExchanges, useQuery } from 'urql'
 import { withUrqlClient } from 'next-urql'
 import { devtoolsExchange } from '@urql/devtools'
-import { Link, Table, Pane } from 'evergreen-ui'
+import { Table, Pane } from 'evergreen-ui'
 import { RepositoryRow } from './RepositoryRow'
 import { RepositoryTags } from './RepositoryTags'
+import type { repo } from '../pages/list'
 
-function Home() {
+interface repositoryTableProps {
+	repos: repo[]
+}
+
+function RepositoryTable({ repos }: repositoryTableProps) {
 	const [res] = useQuery({
 		query: /* GraphQL */ `
 			{
@@ -146,16 +150,15 @@ function Home() {
 		return <div>Error</div>
 	}
 
-	const repos = res.data.viewer.repositories.nodes
+	const reposs = res.data.viewer.repositories.nodes
 	const repos2 = res.data.viewer.repositoriesContributedTo.nodes
-	console.info(res.data.viewer.repositories.nodes)
-	console.info(res.data.viewer.repositoriesContributedTo.nodes)
+	// console.info(res.data.viewer.repositories.nodes)
+	// console.info(res.data.viewer.repositoriesContributedTo.nodes)
 
-	const combined = Array.from([...repos, ...repos2])
+	const combined = Array.from([...reposs, ...repos2])
 
 	return (
 		<Pane>
-			<RepositoryTags />
 			<h2>{combined.length}</h2>
 			<Table width="100%">
 				<Table.Head>
@@ -167,9 +170,16 @@ function Home() {
 					<Table.TextHeaderCell>Tags</Table.TextHeaderCell>
 				</Table.Head>
 				<Table.Body>
-					{combined.map((node) => (
-						<RepositoryRow node={node} />
-					))}
+					{combined.map((node) => {
+						let actualRepo = null
+						for (const repo of repos) {
+							if (repo.name === node.name) {
+								actualRepo = repo
+								break
+							}
+						}
+						return <RepositoryRow node={node} repo={actualRepo} />
+					})}
 				</Table.Body>
 			</Table>
 		</Pane>
@@ -179,4 +189,4 @@ function Home() {
 export default withUrqlClient((_ssrExchange, ctx) => ({
 	url: 'http://localhost:3000/graphql-github',
 	exchanges: [devtoolsExchange, ...defaultExchanges],
-}))(Home)
+}))(RepositoryTable)

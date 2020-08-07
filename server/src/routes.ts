@@ -4,6 +4,7 @@ import { createProxyMiddleware } from 'http-proxy-middleware'
 import { graphqlHTTP } from 'express-graphql'
 import { Schema } from './schema'
 import { join } from 'path'
+import { Repository } from '../../models/Repository'
 
 async function getCache(): Promise<Record<string, string>> {
 	const cacheFile = join(__dirname, 'graphqlcache')
@@ -20,6 +21,33 @@ async function getCacheValue(queryBody: string): Promise<string | undefined> {
 }
 
 const router = Router()
+
+router.post('/repo', (req, res) => {
+	res.json({ test: 'foobar' })
+})
+
+router.post('/api/repo', (req, res) => {
+	console.log('foo')
+	const { repository, tags } = JSON.parse(req.body)
+
+	const newRepository = new Repository({
+		name: repository,
+		tags,
+	})
+	newRepository
+		.save()
+		.then((doc) => {
+			console.info('done', doc)
+		})
+		.catch((err) => {
+			console.error(err)
+		})
+	console.info(repository, tags)
+
+	res.json({
+		error: 'foo',
+	})
+})
 
 router.use(
 	'/graphql-github',
