@@ -6,19 +6,8 @@ export const config = {
 	},
 }
 
-// const p = createProxyMiddleware({
-// 	target: 'https://api.github.com/graphql',
-// 	pathRewrite: { '^(.*)': '/graphql' },
-// 	logLevel: 'debug',
-// 	changeOrigin: true,
-// 	secure: false,
-// 	ws: true,
-// })
-// export default p
-
 export default function GraphqlGithub(req, res) {
 	return new Promise((resolve, reject) => {
-		console.log('done')
 		req.headers['authorization'] = `bearer ${process.env.GITHUB_TOKEN}`
 
 		createProxyMiddleware({
@@ -32,7 +21,6 @@ export default function GraphqlGithub(req, res) {
 				reject('prommise rejected')
 			},
 			onProxyRes: (proxyRes, req, res) => {
-				console.info(proxyRes)
 				resolve()
 			},
 		})
