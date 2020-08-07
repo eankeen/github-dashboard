@@ -14,7 +14,7 @@ export type repository = {
 	tags: string[]
 }
 
-export default function List({
+export default function list({
 	repositories,
 }: InferGetStaticPropsType<typeof getServerSideProps>) {
 	return (
@@ -43,6 +43,7 @@ export async function getServerSideProps(
 	for (const repo of repos) {
 		repositories.push({
 			name: String(repo.name),
+			// TODO: make tags
 			repos: repo.tags || [],
 		})
 	}

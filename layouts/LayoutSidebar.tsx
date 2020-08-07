@@ -15,6 +15,10 @@ export default function LayoutMain({ children }) {
 			to: '/table',
 		},
 		{
+			el: <Text>Cards</Text>,
+			to: '/cards',
+		},
+		{
 			el: <Text>Categories</Text>,
 			to: '/categories',
 		},
