@@ -14,21 +14,21 @@ export default function GraphqlGithub(
 	return new Promise((resolve, reject) => {
 		req.headers['authorization'] = `bearer ${process.env.GITHUB_TOKEN}`
 
-		createProxyMiddleware({
+		// adding proxy in next config didn't work and
+		// we also have to setup a custom authorization header
+		;(createProxyMiddleware({
 			target: 'https://api.github.com/graphql',
 			ignorePath: true,
 			logLevel: 'debug',
 			changeOrigin: true,
 			secure: false,
 			ws: true,
-			onError: (err: Error, req, res) => {
-				reject('prommise rejected')
+			onError: (err, req, res) => {
+				reject(err)
 			},
 			onProxyRes: (proxyRes, req, res) => {
 				resolve()
 			},
-		})
-			// @ts-ignore
-			.call(this, req, res)
+		}) as typeof Object).call(this, req, res)
 	})
 }
