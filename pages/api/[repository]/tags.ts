@@ -1,12 +1,9 @@
-import { createProxyMiddleware } from 'http-proxy-middleware'
-import { dbConnect } from '../../utils/dbConnect'
-import { Repository } from '../../models/Repository'
+import { dbConnect } from '../../../utils/dbConnect'
+import { Repository } from '../../../models/Repository'
 import { NextApiRequest, NextApiResponse } from 'next'
 
-export default async function (req: NextApiRequest, res: NextApiResponse) {
+export default async function tags(req: NextApiRequest, res: NextApiResponse) {
 	await dbConnect()
-
-	console.log(req.body)
 
 	Repository.findOne({
 		name: req.body.repository,

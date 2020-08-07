@@ -19,7 +19,8 @@ export function RepositoryTags({
 			values={tags}
 			onChange={(newTags: string[]) => {
 				console.info('saving', newTags)
-				fetch('/api/repo', {
+				const repositoryName = repository
+				fetch(`/api/${repositoryName}/tags`, {
 					method: 'POST',
 					headers: {
 						'content-type': 'application/json',

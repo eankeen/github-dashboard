@@ -49,9 +49,6 @@ export async function getServerSideProps(
 			name: repo.name || 'missing',
 			repos: repo.tags || [],
 		})
-		// delete repo._id
-		// delete repo.__v
-		// Object.defineProperty(repo, 'prototype', Object.prototype)
 	}
 
 	return {
