@@ -1,4 +1,5 @@
 import { createProxyMiddleware } from 'http-proxy-middleware'
+import { NextApiRequest, NextApiResponse } from 'next'
 
 export const config = {
 	api: {
@@ -6,7 +7,10 @@ export const config = {
 	},
 }
 
-export default function GraphqlGithub(req, res) {
+export default function GraphqlGithub(
+	req: NextApiRequest,
+	res: NextApiResponse
+) {
 	return new Promise((resolve, reject) => {
 		req.headers['authorization'] = `bearer ${process.env.GITHUB_TOKEN}`
 

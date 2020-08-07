@@ -1,3 +1,4 @@
+import { NextApiRequest, NextApiResponse } from 'next'
 import {
 	graphql,
 	GraphQLSchema,
@@ -41,7 +42,7 @@ const schema = new GraphQLSchema({
 	}),
 })
 
-export default (req, res) => {
+export default (req: NextApiRequest, res: NextApiResponse) => {
 	const query = JSON.parse(req.body).query
 
 	graphql(schema, query)
