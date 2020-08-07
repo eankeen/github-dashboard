@@ -19,7 +19,6 @@ export default function GraphqlGithub(
 		;(createProxyMiddleware({
 			target: 'https://api.github.com/graphql',
 			ignorePath: true,
-			logLevel: 'debug',
 			changeOrigin: true,
 			secure: false,
 			ws: true,

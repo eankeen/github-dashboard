@@ -1,18 +1,18 @@
 import { useEffect } from 'react'
 import { useRouter } from 'next/router'
-import LayoutRedirect from '../layouts/LayoutRedirect'
-import { Text } from 'evergreen-ui'
+import LayoutCenter from '../layouts/LayoutCenter'
+import { Heading } from 'evergreen-ui'
 
 export default function IndexPage() {
 	const router = useRouter()
 
 	useEffect(() => {
-		router.push('/list')
+		router.push('/table')
 	}, [])
 
 	return (
-		<LayoutRedirect>
-			<Text>Redirecting...</Text>
-		</LayoutRedirect>
+		<LayoutCenter>
+			<Heading size={400}>Redirecting...</Heading>
+		</LayoutCenter>
 	)
 }

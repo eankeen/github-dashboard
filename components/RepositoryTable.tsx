@@ -4,7 +4,7 @@ import { devtoolsExchange } from '@urql/devtools'
 import { Table, Pane } from 'evergreen-ui'
 import { RepositoryRow } from './RepositoryRow'
 import { RepositoryTags } from './RepositoryTags'
-import type { repo } from '../pages/list'
+import type { repo } from '../pages/table'
 
 interface repositoryTableProps {
 	repos: repo[]

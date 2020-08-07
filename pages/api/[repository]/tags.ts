@@ -6,7 +6,7 @@ export default async function tags(req: NextApiRequest, res: NextApiResponse) {
 	await dbConnect()
 
 	Repository.findOne({
-		name: req.body.repository,
+		name: String(req.query.repository),
 	})
 		.exec()
 		.then((doc) => {
@@ -15,17 +15,15 @@ export default async function tags(req: NextApiRequest, res: NextApiResponse) {
 				return doc.save()
 			}
 
-			// @ts-ignore
-			return Repository.create({
-				name: req.body.repository,
+			return new Repository({
+				name: req.query.repository,
 				tags: req.body.tags,
 			})
 		})
 		.catch((err: unknown) => {
 			console.error(err)
-			res.status(400)
-			res.json({
-				error: 'there was an error',
+			res.status(400).json({
+				error: `error finding or saving repository tags`,
 			})
 		})
 }

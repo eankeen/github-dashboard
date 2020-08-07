@@ -1,6 +1,6 @@
 import { Heading, Paragraph } from 'evergreen-ui'
 import RepositoryTable from '../components/RepositoryTable'
-import LayoutMain from '../layouts/LayoutMain'
+import LayoutSidebar from '../layouts/LayoutSidebar'
 import { dbConnect } from '../utils/dbConnect'
 import { Repository } from '../models/Repository'
 import {
@@ -9,51 +9,47 @@ import {
 	InferGetStaticPropsType,
 } from 'next'
 
-export type repo = {
-	_id: string
-	__v: number
+export type repository = {
 	name: string
 	tags: string[]
 }
 
 export default function List({
-	repos,
+	repositories,
 }: InferGetStaticPropsType<typeof getServerSideProps>) {
 	return (
-		<LayoutMain>
+		<LayoutSidebar>
 			<Heading is="h1" size={800}>
 				List
 			</Heading>
 			<Paragraph>List of all repositories involved with</Paragraph>
-			<RepositoryTable repos={repos} />
-		</LayoutMain>
+			<RepositoryTable repos={repositories} />
+		</LayoutSidebar>
 	)
-}
-
-interface gssProps {
-	repos: repo[]
 }
 
 export async function getServerSideProps(
 	context: GetServerSidePropsContext
-): Promise<GetServerSidePropsResult<gssProps>> {
+): Promise<
+	GetServerSidePropsResult<{
+		repositories: repository[]
+	}>
+> {
 	await dbConnect()
 
-	const props: Record<string, any> = {}
-
 	const repos = await Repository.find().exec()
+	const repositories = []
 
-	const r = []
 	for (const repo of repos) {
-		r.push({
-			name: repo.name || 'missing',
+		repositories.push({
+			name: String(repo.name),
 			repos: repo.tags || [],
 		})
 	}
 
 	return {
 		props: {
-			repos: r,
+			repositories,
 		},
 	}
 }

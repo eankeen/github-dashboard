@@ -11,8 +11,8 @@ export default function LayoutMain({ children }) {
 			to: '/',
 		},
 		{
-			el: <Text>List</Text>,
-			to: '/list',
+			el: <Text>Table</Text>,
+			to: '/table',
 		},
 		{
 			el: <Text>Categories</Text>,

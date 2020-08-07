@@ -1,4 +1,4 @@
-// import 'evergreen-ui'
+import 'evergreen-ui'
 // import { ReactPropTypes } from 'react'
 
 declare module 'remark-html' {

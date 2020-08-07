@@ -1,12 +1,12 @@
 import { Heading } from 'evergreen-ui'
 import Statistics from '../components/Statistics'
-import LayoutMain from '../layouts/LayoutMain'
+import LayoutSidebar from '../layouts/LayoutSidebar'
 
 export default function CategoriesPage() {
 	return (
-		<LayoutMain>
+		<LayoutSidebar>
 			<Heading>Categories</Heading>
 			<Statistics />
-		</LayoutMain>
+		</LayoutSidebar>
 	)
 }
