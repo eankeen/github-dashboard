@@ -1,7 +1,17 @@
 import { defaultExchanges, useQuery } from 'urql'
 import { withUrqlClient } from 'next-urql'
 import { devtoolsExchange } from '@urql/devtools'
-import { Table, Heading, TagInput, Pane, Card } from 'evergreen-ui'
+import {
+	Table,
+	Heading,
+	TagInput,
+	Pane,
+	Card,
+	// @ts-ignore
+	useTheme,
+	Theme,
+	majorScale,
+} from 'evergreen-ui'
 import type { repository } from '../pages/table'
 import { repositoriesQuery } from '../graphql/repositories'
 import RepositoryTags from './RepositoryTags'
@@ -33,7 +43,7 @@ function RepositoryCards({ repositories }: RepositoryCardsProps) {
 	])
 
 	return (
-		<Card>
+		<Pane display="grid" gridTemplateColumns="1fr 1fr 1fr 1fr" gridGap="12px">
 			{allRepos.map((repository) => {
 				let actualRepo = null
 				for (const repo of repositories) {
@@ -43,9 +53,14 @@ function RepositoryCards({ repositories }: RepositoryCardsProps) {
 					}
 				}
 
+				const theme: Theme = useTheme()
+
+				console.info('theme', theme)
+				console.info('aa', theme.colors.background.overlay)
+
 				return (
-					<Card key={repository.name}>
-						<Heading>{repository.name} </Heading>
+					<Card key={repository.name} padding={4} elevation={1}>
+						<Heading>{repository.name}</Heading>
 						<RepositoryTags
 							repository={repository.name}
 							tags={actualRepo?.tags}
@@ -53,7 +68,7 @@ function RepositoryCards({ repositories }: RepositoryCardsProps) {
 					</Card>
 				)
 			})}
-		</Card>
+		</Pane>
 	)
 }
 
