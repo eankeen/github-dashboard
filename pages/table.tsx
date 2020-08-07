@@ -23,7 +23,7 @@ export default function List({
 				List
 			</Heading>
 			<Paragraph>List of all repositories involved with</Paragraph>
-			<RepositoryTable repos={repositories} />
+			<RepositoryTable repositories={repositories} />
 		</LayoutSidebar>
 	)
 }

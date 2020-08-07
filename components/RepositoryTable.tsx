@@ -4,13 +4,13 @@ import { devtoolsExchange } from '@urql/devtools'
 import { Table, Pane } from 'evergreen-ui'
 import { RepositoryRow } from './RepositoryRow'
 import { RepositoryTags } from './RepositoryTags'
-import type { repo } from '../pages/table'
+import type { repository } from '../pages/table'
 
 interface repositoryTableProps {
-	repos: repo[]
+	repositories: repository[]
 }
 
-function RepositoryTable({ repos }: repositoryTableProps) {
+function RepositoryTable({ repositories }: repositoryTableProps) {
 	const [res] = useQuery({
 		query: /* GraphQL */ `
 			{
@@ -171,7 +171,7 @@ function RepositoryTable({ repos }: repositoryTableProps) {
 				<Table.Body>
 					{combined.map((node) => {
 						let actualRepo = null
-						for (const repo of repos) {
+						for (const repo of repositories) {
 							if (repo.name === node.name) {
 								actualRepo = repo
 								break
