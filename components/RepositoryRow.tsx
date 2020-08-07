@@ -31,10 +31,7 @@ export function RepositoryRow({ node, repo }: repositoryRowProps) {
 				</Link>
 			</Table.TextCell>
 			<Table.Cell>
-				<RepositoryTags
-					repository={node.name}
-					tags={repo ? repo.repos : void 0}
-				/>
+				<RepositoryTags repository={node.name} tags={repo?.repos} />
 			</Table.Cell>
 		</Table.Row>
 	)

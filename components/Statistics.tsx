@@ -5,8 +5,6 @@ interface StatisticsProps {
 	theme: theme
 }
 function Statistics({ theme }) {
-	console.info(theme)
-
 	return (
 		<Card display="flex" alignItems="center">
 			<Strong margin={12}>Repositories</Strong>

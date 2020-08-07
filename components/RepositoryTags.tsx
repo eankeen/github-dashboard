@@ -8,17 +8,15 @@ interface repositoryTagsProps {
 
 export function RepositoryTags({
 	repository,
-	tags: tagss,
+	tags: tagsProp,
 }: repositoryTagsProps) {
-	const [tags, setTags] = useState(tagss)
-	console.info('bb', tagss)
+	let [tags, setTags] = useState(tagsProp)
 
 	return (
 		<TagInput
 			tagSubmitKey="space"
 			values={tags}
 			onChange={(newTags: string[]) => {
-				console.info('saving', newTags)
 				const repositoryName = repository
 				fetch(`/api/${repositoryName}/tags`, {
 					method: 'POST',
@@ -29,13 +27,9 @@ export function RepositoryTags({
 						repository,
 						tags: newTags,
 					}),
+				}).catch((err: unknown) => {
+					console.error(err)
 				})
-					.then((res) => {
-						console.info('response client')
-					})
-					.catch((err: unknown) => {
-						console.error(err)
-					})
 				setTags(newTags)
 			}}
 		/>

@@ -144,8 +144,7 @@ function RepositoryTable({ repos }: repositoryTableProps) {
 		return <div>Loading</div>
 	}
 	if (res.error) {
-		console.log(res.error.name, res.error.message)
-		console.info(res)
+		console.log(res.error.name, res.error)
 
 		return <div>Error</div>
 	}
