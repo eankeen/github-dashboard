@@ -7,7 +7,6 @@ import {
 	TagInput,
 	Pane,
 	Card,
-	// @ts-ignore
 	useTheme,
 	Theme,
 	majorScale,
@@ -37,10 +36,7 @@ function RepositoryCards({ repositories }: RepositoryCardsProps) {
 	const Qrepositories = res.data.viewer.repositories.nodes
 	const QrepositoriesContributedTo =
 		res.data.viewer.repositoriesContributedTo.nodes
-	const allRepos = Array.from([
-		...Qrepositories,
-		...QrepositoriesContributedTo,
-	])
+	let allRepos = Array.from([...Qrepositories, ...QrepositoriesContributedTo])
 
 	return (
 		<Pane display="grid" gridTemplateColumns="1fr 1fr 1fr 1fr" gridGap="12px">

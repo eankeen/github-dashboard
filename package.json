@@ -10,7 +10,7 @@
 	"dependencies": {
 		"@types/mongoose": "^5.7.34",
 		"@urql/devtools": "^2.0.2",
-		"evergreen-ui": "^4.29.1",
+		"evergreen-ui": "^5.0.3",
 		"graphql": "^15.3.0",
 		"graphql-tag": "^2.11.0",
 		"http-proxy-middleware": "^1.0.5",

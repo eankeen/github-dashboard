@@ -1,21 +1,26 @@
-import { Tablist, SidebarTab, Text, Pane } from 'evergreen-ui'
+import {
+	Tablist,
+	SidebarTab,
+	Text,
+	Pane,
+	TabNavigation,
+	Tab,
+} from 'evergreen-ui'
 import { useState } from 'react'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 
 export default function LayoutMain({ children }) {
-	const [selectedIndex, setSelected] = useState(1)
+	const router = useRouter()
+	const [selectedIndex, setSelected] = useState(router.route)
 
 	const items = [
 		{
-			el: <Text>Home</Text>,
-			to: '/',
-		},
-		{
-			el: <Text>Table</Text>,
+			el: <Text>List as Table</Text>,
 			to: '/table',
 		},
 		{
-			el: <Text>Cards</Text>,
+			el: <Text>List as Cards</Text>,
 			to: '/cards',
 		},
 		{
@@ -24,21 +29,21 @@ export default function LayoutMain({ children }) {
 		},
 	]
 	return (
-		<Pane display="flex">
-			<Tablist margin={8}>
+		<Pane>
+			<TabNavigation margin={8}>
 				{items.map((item, index) => (
 					<Link key={item.to} href={item.to}>
-						<SidebarTab
+						<Tab
 							id={item.to}
-							onSelect={() => setSelected(index)}
-							isSelected={index === selectedIndex}
+							onSelect={() => setSelected(item.to)}
+							isSelected={item.to === selectedIndex}
 							aria-controls={`panel-${item.to}`}
 						>
-							<Pane margin={8}>{item.el}</Pane>
-						</SidebarTab>
+							{item.el}
+						</Tab>
 					</Link>
 				))}
-			</Tablist>
+			</TabNavigation>
 			<Pane margin={8} width="100%">
 				{children}
 			</Pane>
