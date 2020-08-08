@@ -39,13 +39,10 @@ function RepositoryCards({ repositories }: RepositoryCardsProps) {
 	}
 
 	const Qrepositories = res.data.viewer.repositories.nodes
-	const QrepositoriesContributedTo =
-		res.data.viewer.repositoriesContributedTo.nodes
-	let allRepos = Array.from([...Qrepositories, ...QrepositoriesContributedTo])
 
 	return (
 		<Pane display="grid" gridTemplateColumns="1fr 1fr 1fr 1fr" gridGap="12px">
-			{allRepos.map((repository) => {
+			{Qrepositories.map((repository) => {
 				let actualRepo = null
 				for (const repo of repositories) {
 					if (repo.name === repository.name) {

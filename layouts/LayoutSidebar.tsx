@@ -9,6 +9,15 @@ import {
 import { useState } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
+import { ErrorBoundary } from 'react-error-boundary'
+
+const ErrorFallback = () => {
+	return (
+		<Pane>
+			<Text>There was an error when rendering</Text>
+		</Pane>
+	)
+}
 
 export default function LayoutMain({ children }) {
 	const router = useRouter()
@@ -40,7 +49,9 @@ export default function LayoutMain({ children }) {
 							isSelected={item.to === selectedIndex}
 							aria-controls={`panel-${item.to}`}
 						>
-							{item.el}
+							<ErrorBoundary FallbackComponent={ErrorFallback}>
+								{item.el}
+							</ErrorBoundary>
 						</Tab>
 					</Link>
 				))}
