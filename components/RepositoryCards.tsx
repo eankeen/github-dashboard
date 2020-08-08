@@ -3,16 +3,16 @@ import { withUrqlClient } from 'next-urql'
 import { devtoolsExchange } from '@urql/devtools'
 import { Heading, Pane, Card, useTheme, Theme, Spinner } from 'evergreen-ui'
 import type { repository } from '../pages/table'
-import { repositoriesQuery } from '../graphql/repositories.graphql'
+// import { repositoriesQuery } from '../graphql/repositories.graphql'
 import RepositoryTags from './RepositoryTags'
+import { useRepositoriesQuery } from '../generated/graphql-urql'
 
 interface RepositoryCardsProps {
 	repositories: repository[]
 }
 function RepositoryCards({ repositories }: RepositoryCardsProps) {
-	const [res] = useQuery({
-		query: repositoriesQuery,
-	})
+	const [res] = useRepositoriesQuery()
+
 	const theme: Theme = useTheme()
 
 	if (res.fetching) {

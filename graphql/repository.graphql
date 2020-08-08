@@ -1,3 +1,4 @@
+# remember Repository is the proper node name on GitHub (on Repository)
 fragment Repository on Repository {
 	# commitComments(first: 10) {
 	# 	totalCount

@@ -5,10 +5,13 @@
 	"scripts": {
 		"dev": "next dev -p 3005",
 		"build": "next build",
-		"start": "next start"
+		"start": "next start",
+		"gen": "graphql-codegen --config codegen.yml -r dotenv/config"
 	},
 	"dependencies": {
+		"@graphql-codegen/typescript-urql": "^2.0.0",
 		"@types/mongoose": "^5.7.34",
+		"@urql/core": "^1.12.3",
 		"@urql/devtools": "^2.0.2",
 		"evergreen-ui": "^5.0.3",
 		"graphql": "^15.3.0",
@@ -29,6 +32,13 @@
 		"urql": "^1.10.0"
 	},
 	"devDependencies": {
+		"@graphql-codegen/cli": "1.17.7",
+		"@graphql-codegen/introspection": "1.17.7",
+		"@graphql-codegen/typescript": "1.17.7",
+		"@graphql-codegen/typescript-document-nodes": "1.17.7",
+		"@graphql-codegen/typescript-graphql-files-modules": "1.17.7",
+		"@graphql-codegen/typescript-operations": "1.17.7",
+		"@graphql-codegen/typescript-react-apollo": "1.17.7",
 		"@types/webpack": "^4.41.21",
 		"typescript": "^3.9.7"
 	}
