@@ -5,7 +5,7 @@ import { Table, Pane, Spinner } from 'evergreen-ui'
 import { RepositoryRow } from './RepositoryRow'
 import RepositoryTags from './RepositoryTags'
 import type { repository } from '../pages/table'
-import { repositoriesQuery } from '../graphql/repositories'
+import { repositoriesQuery } from '../graphql/repositories.graphql'
 
 interface repositoryTableProps {
 	repositories: repository[]

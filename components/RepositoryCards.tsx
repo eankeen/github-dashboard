@@ -1,19 +1,9 @@
 import { defaultExchanges, useQuery } from 'urql'
 import { withUrqlClient } from 'next-urql'
 import { devtoolsExchange } from '@urql/devtools'
-import {
-	Table,
-	Heading,
-	TagInput,
-	Pane,
-	Card,
-	useTheme,
-	Theme,
-	majorScale,
-	Spinner,
-} from 'evergreen-ui'
+import { Heading, Pane, Card, useTheme, Theme, Spinner } from 'evergreen-ui'
 import type { repository } from '../pages/table'
-import { repositoriesQuery } from '../graphql/repositories'
+import { repositoriesQuery } from '../graphql/repositories.graphql'
 import RepositoryTags from './RepositoryTags'
 
 interface RepositoryCardsProps {

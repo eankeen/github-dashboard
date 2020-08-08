@@ -1,4 +1,4 @@
-{
+query repositoryQuery {
 	# commitComments(first: 10) {
 	# 	totalCount
 	# 	nodes {

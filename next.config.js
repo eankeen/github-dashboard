@@ -6,12 +6,9 @@ module.exports = {
 		{ buildId, dev, isServer, defaultLoaders, webpack }
 	) => {
 		config.module.rules.push({
-			test: /\.graphql?$/,
-			loader: 'webpack-graphql-loader',
-			options: {
-				// validate: true,
-				removeUnusedFragments: true,
-			},
+			test: /\.(graphql|gql)$/,
+			exclude: /node_modules/,
+			loader: 'graphql-tag/loader',
 		})
 
 		return config
