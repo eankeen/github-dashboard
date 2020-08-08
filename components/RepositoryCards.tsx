@@ -10,6 +10,7 @@ import {
 	useTheme,
 	Theme,
 	majorScale,
+	Spinner,
 } from 'evergreen-ui'
 import type { repository } from '../pages/table'
 import { repositoriesQuery } from '../graphql/repositories'
@@ -25,7 +26,11 @@ function RepositoryCards({ repositories }: RepositoryCardsProps) {
 	console.info(res)
 
 	if (res.fetching) {
-		return <div>Fetching</div>
+		return (
+			<Pane display="flex" justifyContent="center">
+				<Spinner />
+			</Pane>
+		)
 	}
 
 	if (res.error) {

@@ -1,7 +1,7 @@
 import { defaultExchanges, useQuery } from 'urql'
 import { withUrqlClient } from 'next-urql'
 import { devtoolsExchange } from '@urql/devtools'
-import { Table, Pane } from 'evergreen-ui'
+import { Table, Pane, Spinner } from 'evergreen-ui'
 import { RepositoryRow } from './RepositoryRow'
 import RepositoryTags from './RepositoryTags'
 import type { repository } from '../pages/table'
@@ -17,7 +17,11 @@ function RepositoryTable({ repositories }: repositoryTableProps) {
 	})
 
 	if (res.fetching) {
-		return <div>Loading</div>
+		return (
+			<Pane display="flex" justifyContent="center">
+				<Spinner />
+			</Pane>
+		)
 	}
 	if (res.error) {
 		console.log(res.error.name, res.error)

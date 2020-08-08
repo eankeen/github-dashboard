@@ -11,12 +11,14 @@ import { Repository } from '../models/Repository'
 // import repositoriesQuery from '../graphql/repositories.graphql'
 import { repositoriesQuery } from '../graphql/repositories'
 import RepositoryCards from '../components/RepositoryCards'
+import Statistics from '../components/Statistics'
 
 export default function cards({
 	repositories,
 }: InferGetStaticPropsType<typeof getServerSideProps>) {
 	return (
 		<LayoutSidebar>
+			<Statistics />
 			<RepositoryCards repositories={repositories} />
 		</LayoutSidebar>
 	)

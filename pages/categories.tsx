@@ -5,7 +5,6 @@ import LayoutSidebar from '../layouts/LayoutSidebar'
 export default function CategoriesPage() {
 	return (
 		<LayoutSidebar>
-			<Heading>Categories</Heading>
 			<Statistics />
 		</LayoutSidebar>
 	)
