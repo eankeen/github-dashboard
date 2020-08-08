@@ -23,7 +23,7 @@ function RepositoryCards({ repositories }: RepositoryCardsProps) {
 	const [res] = useQuery({
 		query: repositoriesQuery,
 	})
-	console.info(res)
+	const theme: Theme = useTheme()
 
 	if (res.fetching) {
 		return (
@@ -53,8 +53,6 @@ function RepositoryCards({ repositories }: RepositoryCardsProps) {
 						break
 					}
 				}
-
-				const theme: Theme = useTheme()
 
 				return (
 					<Card key={repository.name} padding={4} elevation={1}>
