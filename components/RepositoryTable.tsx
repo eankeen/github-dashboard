@@ -33,8 +33,7 @@ function RepositoryTable({ repositories }: repositoryTableProps) {
 	const combined = Array.from([...reposs, ...repos2])
 
 	return (
-		<Pane>
-			<h2>{combined.length}</h2>
+		<Pane elevation={1}>
 			<Table width="100%">
 				<Table.Head>
 					<Table.SearchHeaderCell />

@@ -28,10 +28,11 @@ export default function LayoutMain({ children }) {
 			to: '/categories',
 		},
 	]
+
 	return (
-		<Pane>
-			<TabNavigation margin={8}>
-				{items.map((item, index) => (
+		<Pane marginLeft={8} marginTop={8} marginRight={8}>
+			<TabNavigation>
+				{items.map((item) => (
 					<Link key={item.to} href={item.to}>
 						<Tab
 							id={item.to}
@@ -44,9 +45,7 @@ export default function LayoutMain({ children }) {
 					</Link>
 				))}
 			</TabNavigation>
-			<Pane margin={8} width="100%">
-				{children}
-			</Pane>
+			<Pane margin={8}>{children}</Pane>
 		</Pane>
 	)
 }

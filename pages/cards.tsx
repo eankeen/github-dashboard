@@ -17,9 +17,6 @@ export default function cards({
 }: InferGetStaticPropsType<typeof getServerSideProps>) {
 	return (
 		<LayoutSidebar>
-			<Heading is="h1" size={800}>
-				Cards
-			</Heading>
 			<RepositoryCards repositories={repositories} />
 		</LayoutSidebar>
 	)

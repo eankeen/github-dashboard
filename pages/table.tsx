@@ -3,6 +3,7 @@ import RepositoryTable from '../components/RepositoryTable'
 import LayoutSidebar from '../layouts/LayoutSidebar'
 import { dbConnect } from '../utils/dbConnect'
 import { Repository } from '../models/Repository'
+import Statistics from '../components/Statistics'
 import {
 	GetServerSidePropsContext,
 	GetServerSidePropsResult,
@@ -19,10 +20,7 @@ export default function list({
 }: InferGetStaticPropsType<typeof getServerSideProps>) {
 	return (
 		<LayoutSidebar>
-			<Heading is="h1" size={800}>
-				List
-			</Heading>
-			<Paragraph>List of all repositories involved with</Paragraph>
+			<Statistics />
 			<RepositoryTable repositories={repositories} />
 		</LayoutSidebar>
 	)
