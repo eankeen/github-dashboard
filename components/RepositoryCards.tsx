@@ -56,9 +56,6 @@ function RepositoryCards({ repositories }: RepositoryCardsProps) {
 
 				const theme: Theme = useTheme()
 
-				console.info('theme', theme)
-				console.info('aa', theme.colors.background.overlay)
-
 				return (
 					<Card key={repository.name} padding={4} elevation={1}>
 						<Heading>{repository.name}</Heading>

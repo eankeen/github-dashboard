@@ -28,6 +28,7 @@ export default function RepositoryTags({
 						tags: newTags,
 					}),
 				}).catch((err: unknown) => {
+					console.info('error updating remote')
 					console.error(err)
 				})
 				setTags(newTags)

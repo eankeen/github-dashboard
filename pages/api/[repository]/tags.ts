@@ -18,7 +18,7 @@ export default async function tags(req: NextApiRequest, res: NextApiResponse) {
 			return new Repository({
 				name: req.query.repository,
 				tags: req.body.tags,
-			})
+			}).save()
 		})
 		.catch((err: unknown) => {
 			console.error(err)
