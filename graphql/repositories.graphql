@@ -1,3 +1,5 @@
+#import "./repository.graphql"
+
 query repositoriesQuery {
 	viewer {
 		avatarUrl
@@ -16,25 +18,13 @@ query repositoriesQuery {
 		) {
 			totalCount
 			nodes {
-				name
-				nameWithOwner
-				owner {
-					login
-					url
-				}
-				url
+				...Repository
 			}
 		}
 		repositoriesContributedTo(first: 100, contributionTypes: [COMMIT]) {
 			totalCount
 			nodes {
-				name
-				nameWithOwner
-				owner {
-					login
-					url
-				}
-				url
+				...Repository
 			}
 		}
 		twitterUsername

@@ -1,4 +1,4 @@
-query repositoryQuery {
+fragment Repository on Repository {
 	# commitComments(first: 10) {
 	# 	totalCount
 	# 	nodes {
